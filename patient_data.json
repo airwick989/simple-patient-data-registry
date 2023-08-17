@@ -1,0 +1,82 @@
+{
+    "7123456789": {
+        "Full Name": "John Smith",
+        "Age": "45",
+        "Diagnosed Conditions": "Fractured Leg|Anxiety",
+        "Current Medications": "Codeine|Lorazepam",
+        "Family History": "No",
+        "Geographic Location": "Toronto"
+    },
+    "5987654321": {
+        "Full Name": "Alice Johnson",
+        "Age": "32",
+        "Diagnosed Conditions": "Type 2 Diabetes|Depression",
+        "Current Medications": "Metformin|Sertraline",
+        "Family History": "No",
+        "Geographic Location": "Kitchener"
+    },
+    "1567890123": {
+        "Full Name": "Robert Brown",
+        "Age": "55",
+        "Diagnosed Conditions": "Arthritis|Hypertension",
+        "Current Medications": "Ibuprofen|Lisinopril",
+        "Family History": "Yes",
+        "Geographic Location": "London"
+    },
+    "2345678901": {
+        "Full Name": "Emily Davis",
+        "Age": "28",
+        "Diagnosed Conditions": "Asthma",
+        "Current Medications": "Albuterol",
+        "Family History": "Yes",
+        "Geographic Location": "Hamilton"
+    },
+    "6109876543": {
+        "Full Name": "Michael Wilson",
+        "Age": "62",
+        "Diagnosed Conditions": "Heart Disease|Depression",
+        "Current Medications": "Aspirin|Fluoxetine|Atorvastatin",
+        "Family History": "No",
+        "Geographic Location": "Toronto"
+    },
+    "9987654321": {
+        "Full Name": "Susan Miller",
+        "Age": "40",
+        "Diagnosed Conditions": "Chronic Pain|Anxiety",
+        "Current Medications": "Oxycodone|Alprazolam",
+        "Family History": "No",
+        "Geographic Location": "Ottawa"
+    },
+    "123456789": {
+        "Full Name": "David Clark",
+        "Age": "50",
+        "Diagnosed Conditions": "Hypertension",
+        "Current Medications": "Losartan",
+        "Family History": "No",
+        "Geographic Location": "Kingston"
+    },
+    "3234567890": {
+        "Full Name": "Linda Martinez",
+        "Age": 29,
+        "Diagnosed Conditions": "Depression",
+        "Current Medications": "Escitalopram",
+        "Family History": "Yes",
+        "Geographic Location": "Windsor"
+    },
+    "4345678901": {
+        "Full Name": "William Anderson",
+        "Age": "65",
+        "Diagnosed Conditions": "Type 1 Diabetes",
+        "Current Medications": "Insulin|Metformin",
+        "Family History": "No",
+        "Geographic Location": "Barrie"
+    },
+    "8456789012": {
+        "Full Name": "Sarah White",
+        "Age": "38",
+        "Diagnosed Conditions": "Chronic Pain|Depression",
+        "Current Medications": "Oxycodone|Duloxetine",
+        "Family History": "Yes",
+        "Geographic Location": "Sudbury"
+    }
+}

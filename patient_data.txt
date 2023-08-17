@@ -1,0 +1,11 @@
+patient_id,full_name,age,injury_history,diagnosed_conditions,current_medications,family_history,doctor_diagnosis,geographic_location,opioid_risk
+7123456789,John Smith,45,1,Fractured Leg|Anxiety,Codeine|Lorazepam,No,High Risk,Toronto,1
+5987654321,Alice Johnson,32,0,Type 2 Diabetes|Depression,Metformin|Sertraline,No,Low Risk,Kitchener,0
+1567890123,Robert Brown,55,1,Arthritis|Hypertension,Ibuprofen|Lisinopril,Yes,Low Risk,London,0
+2345678901,Emily Davis,28,0,Asthma,Albuterol,Yes,Medium Risk,Hamilton,1
+6109876543,Michael Wilson,62,0,Heart Disease|Depression,Aspirin|Fluoxetine|Atorvastatin,No,High Risk,Toronto,1
+9987654321,Susan Miller,40,0,Chronic Pain|Anxiety,Oxycodone|Alprazolam,No,High Risk,Ottawa,1
+0123456789,David Clark,50,1,Hypertension,Losartan,No,Low Risk,Kingston,0
+3234567890,Linda Martinez,29,1,Depression,Escitalopram,Yes,Medium Risk,Windsor,1
+4345678901,William Anderson,65,0,Type 1 Diabetes,Insulin|Metformin,No,Low Risk,Barrie,0
+8456789012,Sarah White,38,1,Chronic Pain|Depression,Oxycodone|Duloxetine,Yes,High Risk,Sudbury,1
