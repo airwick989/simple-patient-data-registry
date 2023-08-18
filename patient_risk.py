@@ -10,14 +10,22 @@ high_risk_warning = """
 ------------------------------
 """
 
-FILENAME = "patient_data.json"
+PATIENT_FILE = "patient_data.json"
+FACTORS_FILE = "factors.txt"
 
 patient_data = {}
-with open(FILENAME, "r") as json_file:
+with open(PATIENT_FILE, "r") as json_file:
     patient_data = json.load(json_file)
 for key in list(patient_data.keys()):
     patient_data[int(key)] = patient_data[key]
     del patient_data[key] 
+
+factors_list = []
+with open(FACTORS_FILE, "r") as txt_file:
+    factors_list = txt_file.readlines()
+for i in range(0, len(factors_list)):
+    factors_list[i] = factors_list[i].strip("\n").strip().lower()
+factors_list = [i for i in factors_list if i != ""]
 
 
 def search():
@@ -40,16 +48,34 @@ def search():
         os.system('cls')
         patient = dict(patient_data[card_num])
 
-        print("Please find below the corresponding patient's data:")
+        risk = evaluateRisk(patient)
+        if risk:
+            print(high_risk_warning)
 
-        # if opioid_risk == 1:
-        #     print(high_risk_warning)
+        print("Please find below the corresponding patient's data:\n")
 
         for key, value in patient.items():
             print(f"{key}: {value}")
+
         placeholder = input("\nPress Enter to Continue")
     except KeyError:
         placeholder = input("A patient with that Health Card Number does not exist.")
+
+
+def evaluateRisk(patient):
+    patient_factors = patient["Diagnosed Conditions"].split("|")
+    patient_factors = patient_factors + patient["Current Medications"].split("|")
+    if patient["Family History"].lower() == "yes":
+        return True
+    else:
+        factor_count = 0
+        for factor in patient_factors:
+            if factor.strip().lower() in factors_list:
+                factor_count += 1
+        if factor_count >= 3:
+            return True
+        else:
+            return False
 
 
 def update():
@@ -133,8 +159,15 @@ def modify(patient):
                     location = input("Please enter the updated geographic location: ")
                     patient["Geographic Location"] = location
                 if selection == 7:
-                    done = True
-                    bypass = True
+                    cancel = input("Are you sure you would like to cancel? Enter Y for yes, or N for no: ").strip()
+                    if cancel.lower() != "y" and cancel.lower() != "n":
+                        print("Please only enter Y or N.")
+                    else:
+                        if cancel.lower() == "y":
+                            done = True
+                            bypass = True
+                        elif cancel.lower() == "n":
+                            pass
                 
                 valid = False
                 while not valid:
@@ -163,8 +196,116 @@ def modify(patient):
 
 
 def save():
-    with open(FILENAME, "w") as jsonfile:
+    with open(PATIENT_FILE, "w") as jsonfile:
         jsonfile.write(json.dumps(patient_data, indent=4, separators=(',',': ')))
+
+
+def add():
+    card_num = ""
+    patient = {
+        "Full Name": "",
+        "Age": "",
+        "Diagnosed Conditions": "",
+        "Current Medications": "",
+        "Family History": "",
+        "Geographic Location": ""
+    }
+
+    valid = False
+    while not valid:
+        os.system('cls')
+        print("Please enter the Health Card Number of the patient\n")
+        print('Enter "cancel" to cancel the procedure\n')
+        try:
+            card_num = input("Health Card Number: ").strip(" ").strip(",").strip()
+            
+            if card_num.lower() == "cancel":
+                return
+            
+            card_num = int(card_num)
+            
+            if len(str(card_num)) != 10:
+                placeholder = input("The Health Card Number must be exactly 10 digits long.\nPress enter to enter the Health Card Number again.")
+            else:
+                if card_num in patient_data:
+                    placeholder = input("This Health Card Number already exists.\nPress enter to enter the Health Card Number again.")
+                else:
+                    valid = True
+        except ValueError:
+            placeholder = input("The Health Card Number must contain Digits only.\nPress enter to enter the Health Card Number again.")
+    
+    os.system('cls')
+    print("Please enter the full name of the patient\n")
+    print('Enter "cancel" to cancel the procedure\n')
+    name = input("Full name: ").strip(",").strip()
+    if name.lower() == "cancel":
+        return
+    patient["Full Name"] = name
+
+    os.system('cls')
+    print("Please enter the age of the patient\n")
+    print('Enter "cancel" to cancel the procedure\n')
+    valid = False
+    while not valid:
+        age = input("Age: ").strip()
+        if age.lower() == "cancel":
+            return
+        try:
+            age = int(age)
+            patient["Age"] = age
+            valid = True
+        except ValueError:
+            print("Please enter a number for the age.")
+    patient["Age"] = age
+
+    os.system('cls')
+    print('Please enter the diagnosed conditions of the patient. PLEASE ENSURE that multiple conditions are separated by a "|".\n')
+    print('Enter "cancel" to cancel the procedure\n')
+    conditions = input("Diagnosed Conditions: ").strip(",").strip()
+    if conditions.lower() == "cancel":
+        return
+    patient["Diagnosed Conditions"] = conditions
+
+    os.system('cls')
+    print('Please enter the current medications of the patient. PLEASE ENSURE that multiple medications are separated by a "|".\n')
+    print('Enter "cancel" to cancel the procedure\n')
+    medications = input("Current Medications: ").strip(",").strip()
+    if medications.lower() == "cancel":
+        return
+    patient["Current Medications"] = medications
+
+    os.system('cls')
+    valid = False
+    while not valid:
+        print('Please enter the whether the patient has a family history.\n')
+        print('Enter "cancel" to cancel the procedure\n')
+        history = input("Does the patient's family have a history of substance abuse? Enter Y for yes, or N for no: ").strip()
+
+        if history.lower() == "cancel":
+            return
+
+        if history.lower() != "y" and history.lower() != "n":
+            print("\nPlease only enter Y or N.\n")
+        else:
+            if history.lower() == "y":
+                patient["Family History"] = "Yes"
+            elif history.lower() == "n":
+                patient["Family History"] = "No"
+            valid = True
+
+    os.system('cls')
+    print("Please enter the geographic location of the patient\n")
+    print('Enter "cancel" to cancel the procedure\n')
+    location = input("Geographic Location: ").strip(",").strip()
+    if location.lower() == "cancel":
+        return
+    patient["Geographic Location"] = location
+
+    os.system('cls')
+    patient_data[card_num] = patient
+
+    
+
     
 
 
@@ -184,5 +325,9 @@ while True:
             if selection == 2:
                 update()
                 save()
+            if selection == 3:
+                add()
+                save()
     except ValueError:
         placeholder = input("Please enter only 1, 2, or 3. Press Enter to continue.")
+

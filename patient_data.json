@@ -47,13 +47,13 @@
         "Family History": "No",
         "Geographic Location": "Ottawa"
     },
-    "123456789": {
+    "1234567890": {
         "Full Name": "David Clark",
-        "Age": "50",
+        "Age": 51,
         "Diagnosed Conditions": "Hypertension",
         "Current Medications": "Losartan",
         "Family History": "No",
-        "Geographic Location": "Kingston"
+        "Geographic Location": "Oshawa"
     },
     "3234567890": {
         "Full Name": "Linda Martinez",
@@ -73,10 +73,26 @@
     },
     "8456789012": {
         "Full Name": "Sarah White",
-        "Age": "38",
+        "Age": 39,
         "Diagnosed Conditions": "Chronic Pain|Depression",
         "Current Medications": "Oxycodone|Duloxetine",
         "Family History": "Yes",
-        "Geographic Location": "Sudbury"
+        "Geographic Location": "Winnipeg"
+    },
+    "1111111111": {
+        "Full Name": "Hot Dog",
+        "Age": 12,
+        "Diagnosed Conditions": "fridge|washing machine",
+        "Current Medications": "lemon",
+        "Family History": "Yes",
+        "Geographic Location": "alabama"
+    },
+    "1230985671": {
+        "Full Name": "Anusha Murtaza",
+        "Age": 22,
+        "Diagnosed Conditions": "Anxiety|Depression|Narcicissm",
+        "Current Medications": "Zaza|Cocaine|Ice Cappe",
+        "Family History": "Yes",
+        "Geographic Location": "Whitby"
     }
 }
